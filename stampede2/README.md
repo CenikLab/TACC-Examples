@@ -3,6 +3,9 @@
 For the official Stampede2 documentation, refer to 
 [https://portal.tacc.utexas.edu/user-guides/stampede2](https://portal.tacc.utexas.edu/user-guides/stampede2) .
 
+Stampede2 works on
+[Slurm Workload Manager](https://slurm.schedmd.com/).
+
 # Prerequisites
 
 **TACC Account:** You can get one using your UT EID on the 
