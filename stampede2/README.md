@@ -60,3 +60,19 @@ host *tacc.utexas.edu
 After you save and close the configuration file, open an ssh connection. You will go through the steps of MFA.
 Upon success, if you try to open another ssh connection, 
 you should see that you log in without typing your password or the MFA token.  
+
+
+# Using Compute Nodes Interactively
+
+One way of using the compute nodes is running bash inside them and running and executing your scripts or compiled executables interactively.
+
+This can be done with the **srun** command with some particular parameters:
+```
+srun --pty  -N 1 -n 8 -t 2:30:00 -p normal  /bin/bash
+```
+The above command will give you one node and 8 tasks (thus 8 cpu cores) for two and a half hours.
+After you run the above command, you can verify that you are not on a login (head) node by typing 
+```
+hostname
+```
+On a login node, the output begins with **login** whereas on a compute node the hostname typically begins with the letter **c**.
