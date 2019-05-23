@@ -6,7 +6,7 @@ Jobs that require more than 64 GB memory can be run using special compute nodes 
 
 A brief overview is as follows:
 
-1. Prior to running a session or job, load the TACC module required for large memory usage: ```module load TACC-largemem```.
+1. Prior to running a session or job, load the TACC module required for large memory usage: ```module load TACC-largemem`.
 
 2. Add a new directive in your slurm job script or pass a command line parameter to indicate usage of a large memory node. ```#SBATCH -p largemem512GB``` can be added to the directives in a slurm job script, or pass the following command line parameter to the sbatch or idev call: ```-p largemem512GB```.
 
