@@ -15,8 +15,8 @@ Please read the rest of this document before using Mozart.
 |**Storage (OS)**| 2 TB NVME |
 |**Storage (HOME)**| 2 TB NVME |
 |**Storage (Fast)**| 15 TB, Raid 0, SSD |
-|**Strorage (Archival)**| 51 TB  |
-|**Newtwork**| 10 Gbit Ethernet |
+|**Storage (Archival)**| 51 TB  |
+|**Network**| 10 Gbit Ethernet |
 |**Operating System**| Ubuntu 20.04 |  
 
 
@@ -45,7 +45,7 @@ Add the following line to your bash profile
 alias mozart='ssh username@IP'
 ```
 
-Log out and log in back (or, instead, run `source ~/.bashrc`). Then you'll be able to access mozart after typing `mozart` in the terminal, followed by your password.
+Log out and log in back (or, instead, run `source ~/.bashrc`). Then you'll be able to access Mozart after typing `mozart` in the terminal, followed by your password.
 
 ## Obtaining Account
 
