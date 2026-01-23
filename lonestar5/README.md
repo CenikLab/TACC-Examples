@@ -13,3 +13,7 @@ A brief overview is as follows:
 3. When finished running on a large memory node, re-configure to default settings by executing ```module load TACC```.
 
 Note if running a MPI job, the user must also load the impi-largemem TACC module prior to submitting the job.
+
+# Activating a conda environment for largemem jobs
+
+While on standard nodes the user can activate a conda environment on the login node prior to job script submission, our experience with the largemem nodes requires the environment activation call within the job script. The proper way to call this is to specify the `activate` executable explicitly: ```source $HOME/miniconda3/bin/activate ENVNAME```. Keep in mind that depending on which conda derivative you are using, the path to the `activate` executable may differ.
