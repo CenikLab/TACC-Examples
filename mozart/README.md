@@ -17,14 +17,13 @@ Please read the rest of this document before using Mozart.
 |**Storage (Fast)**| 15 TB, Raid 0, SSD |
 |**Storage (Archival)**| 51 TB  |
 |**Network**| 10 Gbit Ethernet |
-|**Operating System**| Ubuntu 20.04 |  
+|**Operating System**| Ubuntu 22.04 |  
 
 
 ## Access
 
 You can access Mozart via ssh over
-[Lonestar5](https://github.com/CenikLab/TACC-Examples/tree/master/lonestar5) or
-[Stampede2](https://github.com/CenikLab/TACC-Examples/tree/master/stampede2) head nodes **ONLY**.
+[Lonestar6](https://docs.tacc.utexas.edu/hpc/lonestar6/#access) head nodes **ONLY**.
 
 *Mozart is behind firewalls and therefore you won't be able to access it from other locations.*
 
@@ -32,7 +31,7 @@ You can access Mozart via ssh over
 ssh username@123.45.67.8
 ```
 
-For the actual IP of Mozart, ask Hakan.
+For the actual IP of Mozart, ask Can.
 
 ### An Access Shortcut
 
@@ -47,9 +46,34 @@ alias mozart='ssh username@IP'
 
 Log out and log in back (or, instead, run `source ~/.bashrc`). Then you'll be able to access Mozart after typing `mozart` in the terminal, followed by your password.
 
+### Using SSH ProxyJump
+
+First, you'll have to create ssh keys and upload them to Mozart/Lonestar6. There are many online guides to follow. You can also skip this step and enter your TACC and Mozart passwords manually.
+
+On your local machine, in your `~/.ssh` dir, create a `config` text file (no file extension). Paste the below
+
+```
+Host mozart
+  HostName XXX.X.XXX.XXX
+  MACs hmac-sha2-512 # <---- May or may not be needed, doesn't hurt to include, fixed a problem for Logan once
+  User lpersyn
+  LocalForward 16006 127.0.0.1:6006
+  IdentityFile ~/.ssh/tacc_rsa_key # <--- optional, for if you want port forwarding
+  ProxyJump lonestar6
+
+Host lonestar6
+  HostName ls6.tacc.utexas.edu
+  MACs hmac-sha2-512  # <---- May or may not be needed, doesn't hurt to include, fixed a problem for Logan once
+  User lpersyn
+  LocalForward 16006 127.0.0.1:16006 # <--- optional, for if you want port forwarding
+  IdentityFile ~/.ssh/Mozart_rsa_key
+```
+
+Then on your local machine, you can access Mozart directly with `ssh mozart`. It will automatically connect to TACC and then to Mozart. You'll only see a direct jump to Mozart. You still have to enter your MFA code to login to TACC.
+
 ## Obtaining Account
 
-Please contact Hakan for account related issues.
+Please contact Can for account related issues.
 
 ## Storage
 
@@ -128,4 +152,4 @@ For long time consuming executions, jobs, pipelines etc., users are **strongly e
 
 ## Questions
 
-For questions or requests, contact Hakan.
+For questions or requests, contact Can or Logan.
